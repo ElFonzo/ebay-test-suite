@@ -1,0 +1,24 @@
+{
+  "tests": "./__tests__/ebay_cart_test_1.js",
+  "timeout": 10000,
+  "output": "./output",
+  "helpers": {
+    "WebDriverIO": {
+      "smartWait": 15000,
+      "url": "http://ebay.com",
+      "browser": "chrome",
+      "timeouts": {
+        "script": 60000,
+        "page load": 10000
+      }
+    }
+  },
+  "include": {
+    "I": "./steps_file.js",
+    "testCase1": "./scenarios/testCase1",
+    "testCase2": "./scenarios/testCase2"
+  },
+  "bootstrap": false,
+  "mocha": {},
+  "name": "ebay-test-suite"
+}

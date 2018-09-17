@@ -1,0 +1,15 @@
+{
+  "name": "ebay-test-suite",
+  "version": "1.0.0",
+  "description": "ebay test suite",
+  "main": "yes",
+  "author": "alex maddock",
+  "license": "MIT",
+  "scripts": {
+    "ebay": "codeceptjs run --steps"
+  },
+  "dependencies": {
+    "codeceptjs": "^1.3.3",
+    "webdriverio": "^4.13.2"
+  }
+}
