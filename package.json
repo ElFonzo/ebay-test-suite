@@ -9,6 +9,8 @@
     "ebay": "codeceptjs run --steps"
   },
   "dependencies": {
+    "bluebird": "^3.5.2",
+    "bluebird-retry": "^0.11.0",
     "codeceptjs": "^1.3.3",
     "webdriverio": "^4.13.2"
   }
