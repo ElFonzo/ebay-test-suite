@@ -6,6 +6,8 @@
   "author": "alex maddock",
   "license": "MIT",
   "scripts": {
+    "install": "selenium-standalone install",
+    "start": "selenium-standalone start",
     "ebay": "codeceptjs run --steps"
   },
   "dependencies": {

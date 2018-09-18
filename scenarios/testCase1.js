@@ -1,3 +1,4 @@
+// const tryFor = require('../helpers/tryFor');
 const I = actor();
 
 module.exports = {
@@ -12,24 +13,32 @@ module.exports = {
     I.click('Search');
    }, 
 
-   selectProduct() {
-    let itemSelect = '//h3[@class="s-item__title" and @role="text"]';
-    let longSelect = '//*[@id="srp-river-results-listing2"]/div/div[2]/a/h3'
-    let alternativeSelect = '//*[@id="srp-river-results-listing2"]/div/div[2]/a'
-    I.waitForElement(alternativeSelect, 25);
-    I.click(alternativeSelect);
-    // store results of name of item you purchased let searchResult = await I.yield();
+   selectProduct: function(position) {
+    let option1 = '//div[@id="mainContent"]'
+    let option2 = `${option1}//li[@id="srp-river-results-listing${position}"]/div/div[1]`
+    let option3 = 'div'
+    I.waitForElement(option1);
+    I.click(option2);
    },
 
-   addToCart(/*timeout*/) {
-    I.waitForText('Add to cart', /*timeout*/);
-    I.click('Add to cart');   
+   addToCart() {
+    let addToCartText = '//form[@name="viactiondetails"]//span/a[text()="Add to cart"]'
+    let addToCartId = '#atcRedesignId_btn';
+    let addToCartXpath = '//*[@id="atcRedesignId_btn"]';
+    // I.waitForText('Add to cart', 7);
+    I.waitForElement(addToCartXpath, 5);
+    I.click(addToCartXpath);
+    // I.click('Add to cart');   
    },
+
+   
 
    goToCart(timeout) {
-    I.waitForElement('.atc-layer-wrapper');
-    I.waitForText('Go to cart', timeout);
-    I.click('Go to cart'); 
+    let wrapper = '.atc-layer-wrapper'
+    let goToCart = `//div[@class="atc-layer-wrapper]//a//span[text()="Go to cart"]`
+    I.waitForElement(wrapper);
+    // I.waitForText('Go to cart', timeout);
+    I.click(goToCart); 
    },
 
    verifyCartUpdate() {
@@ -37,15 +46,25 @@ module.exports = {
        /*I.see(searchResult);*/ //{"itemId":"223091803466"}
    },
 
-   async cartTotalCheck() {
-      await let values = I.grabText('div.item-price span span');
-      let cartSum = values.map((total) => {
-        console.log('values:', values);
-        console.log('cartSum:', cartSum);
-        console.log('total:', total)
-        return { total };
-      })
-   }
+   async cartItemPrices() {
+       let values = await I.grabTextFrom('div.item-price span span');
+       console.log(JSON.stringify(values));
+       let convert = Number(values.replace(/[^0-9.-]+/g,""))
+       let sum = convert.reduce(function(accumulator, currentValue) {
+          return accumulator + currentValue;  
+       }, 0);
+       console.log(sum);
+   },
+
+  //  async cartTotalCheck() {
+  //     await let values = I.grabText('div.item-price span span');
+  //     let cartSum = values.map((total) => {
+  //       console.log('values:', values);
+  //       console.log('cartSum:', cartSum);
+  //       console.log('total:', total)
+  //       return { total };
+  //     })
+  //  }
 
 
 
