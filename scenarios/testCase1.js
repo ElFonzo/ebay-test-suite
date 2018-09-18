@@ -1,11 +1,9 @@
-// const tryFor = require('../helpers/tryFor');
 const I = actor();
 
 module.exports = {
 
    checkPage() {
     I.amOnPage('/');
-    // I.see('ebay', '//td/a[@href="https://www.ebay.com"]');
    },
 
    searchProduct(searchTerm) {
@@ -25,10 +23,10 @@ module.exports = {
     let addToCartText = '//form[@name="viactiondetails"]//span/a[text()="Add to cart"]'
     let addToCartId = '#atcRedesignId_btn';
     let addToCartXpath = '//*[@id="atcRedesignId_btn"]';
-    // I.waitForText('Add to cart', 7);
-    I.waitForElement(addToCartXpath, 5);
-    I.click(addToCartXpath);
-    // I.click('Add to cart');   
+    I.waitForText('Add to cart', 7);
+    I.click('Add to cart');  
+    // I.waitForElement(addToCartXpath, 5);
+    // I.click(addToCartXpath);
    },
 
    
@@ -43,29 +41,16 @@ module.exports = {
 
    verifyCartUpdate() {
        I.waitForElement('.listsummary')
-       /*I.see(searchResult);*/ //{"itemId":"223091803466"}
    },
 
-   async cartItemPrices() {
+   async cartItemPrices() { //works in repl, throws not function in error in tests
        let values = await I.grabTextFrom('div.item-price span span');
-       console.log(JSON.stringify(values));
+       JSON.stringify(values);
        let convert = Number(values.replace(/[^0-9.-]+/g,""))
        let sum = convert.reduce(function(accumulator, currentValue) {
           return accumulator + currentValue;  
        }, 0);
        console.log(sum);
-   },
-
-  //  async cartTotalCheck() {
-  //     await let values = I.grabText('div.item-price span span');
-  //     let cartSum = values.map((total) => {
-  //       console.log('values:', values);
-  //       console.log('cartSum:', cartSum);
-  //       console.log('total:', total)
-  //       return { total };
-  //     })
-  //  }
-
-
+   }
 
 }
