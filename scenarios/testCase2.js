@@ -44,8 +44,10 @@ module.exports = {
         console.log(itemListPrice);
     },
 
-    filterListings(filterBar) {
-        I.click(filterBar);
+    filterListings() {
+        let buyNow = "Buy It Now";
+        I.click(buyNow);
+        // I.click(`//span[@title=${buyNow}]`);
     },
 
     async selectItemList() {
