@@ -6,13 +6,14 @@
   "author": "alex maddock",
   "license": "MIT",
   "scripts": {
-    "install": "selenium-standalone install",
-    "start": "selenium-standalone start",
+    "install-server": "selenium-standalone install",
+    "start-server": "selenium-standalone start",
     "ebay": "codeceptjs run --steps"
   },
   "dependencies": {
     "bluebird": "^3.5.2",
     "bluebird-retry": "^0.11.0",
+    "chai": "^4.1.2",
     "codeceptjs": "^1.3.3",
     "webdriverio": "^4.13.2"
   }

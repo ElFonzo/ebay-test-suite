@@ -1,10 +1,10 @@
 {
-  "tests": "./__tests__/ebay_cart_test_1.js",
-  "timeout": 10000,
+  "tests": "./__tests__/ebay_cart_test_2.js",
+  "timeout": 45000,
   "output": "./output",
   "helpers": {
     "WebDriverIO": {
-      "smartWait": 15000,
+      "smartWait": 20000,
       "url": "http://ebay.com",
       "browser": "chrome",
       "timeouts": {

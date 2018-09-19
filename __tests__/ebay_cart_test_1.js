@@ -6,7 +6,7 @@ Scenario('I can search, add and evaluate products at cart', async (I, testCase1)
     // let TryFor = tryFor(6, 1000);
 
     //add 1st item to cart
-    testCase1.checkPage();
+    testCase1.visitPage();
     testCase1.searchProduct('pencil');
     // tryFor(()=> testCase1.selectProduct());
     testCase1.selectProduct(3);

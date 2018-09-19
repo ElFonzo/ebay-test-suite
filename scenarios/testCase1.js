@@ -12,9 +12,8 @@ module.exports = {
    }, 
 
    selectProduct: function(position) {
-    let option1 = '//div[@id="mainContent"]'
-    let option2 = `${option1}//li[@id="srp-river-results-listing${position}"]/div/div[1]`
-    let option3 = 'div'
+    let option1 = '//div[@id="mainContent"]';
+    let option2 = `${option1}//li[@id="srp-river-results-listing${position}"]/div/div[1]`;
     I.waitForElement(option1);
     I.click(option2);
    },
